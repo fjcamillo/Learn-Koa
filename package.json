@@ -1,5 +1,10 @@
 {
   "dependencies": {
-    "koa": "^2.2.0"
+    "babel-cli": "^6.24.1",
+    "babel-plugin-transform-async-to-generator": "^6.24.1",
+    "babel-plugin-transform-es2015-modules-commonjs": "^6.24.1",
+    "babel-register": "^6.24.1",
+    "koa": "^2.2.0",
+    "koa-router": "^7.2.0"
   }
 }
