@@ -8,6 +8,8 @@ const app = new Router()
 
 app.get('/', async (ctx) => {
   ctx.body = "Hello World!"
+}).get('/test', async(ctx) => {
+  ctx.body = "Test"
 })
 
 koa.use(app.routes())
