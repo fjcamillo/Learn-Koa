@@ -6,10 +6,22 @@ import Router from 'koa-router'
 const koa = new Koa()
 const app = new Router()
 
+const data = {
+  text: 'Text'
+}
+
 app.get('/', async (ctx) => {
   ctx.body = "Hello World!"
-}).get('/test', async(ctx) => {
-  ctx.body = "Test"
+  console.log(ctx)
+})
+.get('/test', async (ctx) => {
+  ctx.body = data.text
+})
+.get('/name/:id', async (ctx) => {
+  data.text = ctx.params.id
+})
+.post('/post', async (ctx) => {
+  // data.text = ctx.params.id
 })
 
 koa.use(app.routes())
