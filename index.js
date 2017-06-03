@@ -3,11 +3,11 @@
 import Koa from 'koa'
 import Router from 'koa-router'
 
-import { startPostgres } from './model/mainquery'
+// import { startPostgres } from './src/mainquery'
 
 const koa = new Koa()
 const app = new Router({
-  prefix:"play/"
+  // prefix:"/fjcamillo/"
 })
 
 const data = {

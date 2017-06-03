@@ -4,6 +4,7 @@
     "babel-plugin-transform-async-to-generator": "^6.24.1",
     "babel-plugin-transform-es2015-modules-commonjs": "^6.24.1",
     "babel-register": "^6.24.1",
+    "babel-watch": "^2.0.6",
     "koa": "^2.2.0",
     "koa-router": "^7.2.0",
     "nodemon": "^1.11.0",
@@ -12,6 +13,6 @@
     "squel": "^5.10.0"
   },
   "scripts": {
-    "start": "babel-node index.js"
+    "start": "babel-watch index.js"
   }
 }
