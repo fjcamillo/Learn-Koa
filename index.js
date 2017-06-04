@@ -3,7 +3,8 @@
 import Koa from 'koa'
 import Router from 'koa-router'
 
-// import { startPostgres } from './src/mainquery'
+import { routes as indexRoutes } from './routes/index'
+import { routes as blogsRoutes } from './routes/blogs'
 
 const koa = new Koa()
 const app = new Router({
@@ -14,19 +15,11 @@ const data = {
   text: 'Text'
 }
 
-app.get('/', async (ctx) => {
-  ctx.body = "Hello World!"
-  console.log(ctx)
-})
-.get('/test', async (ctx) => {
-  ctx.body = data.text
-})
-.get('/name/:id', async (ctx) => {
-  data.text = ctx.params.id
-})
-.post('/post', async (ctx) => {
-  // data.text = ctx.params.id
-})
+for (const route in [indexRoutes, blogsRoutes]) {
+  route(app)
+}
+
+
 
 koa.use(app.routes())
 koa.listen(3001)
