@@ -1,5 +1,9 @@
 'use strict'
 
+const data = {
+  text: 'Text'
+}
+
 export async function routes(router){
   router
     .get('/', async (ctx) => {

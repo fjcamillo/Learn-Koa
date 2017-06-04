@@ -3,19 +3,17 @@
 import Koa from 'koa'
 import Router from 'koa-router'
 
-import { routes as indexRoutes } from './routes/index'
-import { routes as blogsRoutes } from './routes/blogs'
+import { routes as indexRoutes } from './src/routes/index'
+import { routes as blogsRoutes } from './src/routes/blogs'
 
 const koa = new Koa()
 const app = new Router({
   // prefix:"/fjcamillo/"
 })
 
-const data = {
-  text: 'Text'
-}
 
-for (const route in [indexRoutes, blogsRoutes]) {
+
+for (const route of [indexRoutes, blogsRoutes]) {
   route(app)
 }
 
