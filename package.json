@@ -13,6 +13,6 @@
     "squel": "^5.10.0"
   },
   "scripts": {
-    "start": "babel-watch index.js"
+    "start": "DEBUG=koa* babel-watch index.js"
   }
 }

@@ -19,4 +19,7 @@ export async function routes(router){
     .post('/post', async (ctx) => {
       // data.text = ctx.params.id
     })
+    .get('/body', async (ctx) => {
+      console.log(ctx.request.url)
+    })
 }

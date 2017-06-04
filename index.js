@@ -12,11 +12,11 @@ const app = new Router({
 })
 
 
-
 for (const route of [indexRoutes, blogsRoutes]) {
   route(app)
 }
 
+// app.use()
 
 
 koa.use(app.routes())
