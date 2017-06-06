@@ -4,31 +4,36 @@ import PgAsync from 'pg-async'
 export{ SQL } from 'pg-async'
 import once from 'once'
 
-
+import { schema as blogsSchema } from  './blogs'
 
 async function setupSchema(tx) {
-  return await tx.query(`
-      CREATE TABLE blogs (
-        id int primary key not null,
-        title text not null,
-        data jsonb not null
-      )`)
+
+  await pg.transaction(async (tx) => {
+		for (const schema of schemas) {
+			const {drop, create} = schema
+			if (drop) {
+				for (const q of drop) {
+					await tx.query(q)
+				}
+			}
+			if (create) {
+				for (const q of create) {
+					await tx.query(q)
+				}
+			}
+		}
+	})
+
+
+
+  // return await tx.query()
 }
 
 export async function startPostgres(uri){
   const pg = new PgAsync(uri)
-  // pg.query(`
-  //   create table blogs (
-  //     id int primary key not null,
-  //     title text not null,
-  //     data jsonb not null
-  //   )
-  //   `)
-  const setup = once(setupSchema)
-  // ctx._postgres = pg
-
+  // const setup = once(setupSchema)
   return async (ctx, next) => {
-    await setup(pg)
+    await setupSchema(pg)
     return await next()
   }
 }
