@@ -6,7 +6,7 @@ import Router from 'koa-router'
 import { routes as indexRoutes } from './src/routes/index'
 import { routes as blogsRoutes } from './src/routes/blogs'
 
-import { startPostgres } from './src/model/main'
+import startPostgres  from './src/model/main'
 
 
 const koa = new Koa()
@@ -14,7 +14,17 @@ const app = new Router({
   // prefix:"/fjcamillo/"
 })
 
-const uri = 'postgres://postgres@localhost:5432/koastudy'
+const uri = {
+  postgres_docker: 'postgres://postgres@localhost:5432/koastudy',
+  local: {
+    user: 'fjcamillo',
+    host: 'localhost',
+    port: '5432',
+    database: 'koastudy'
+  }
+}
+
+
 
 const db = {
   user: 'fjcamillo',
